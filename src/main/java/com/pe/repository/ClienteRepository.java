@@ -7,7 +7,7 @@ import com.pe.entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
-	@Query("select c from Cliente c where c.DatosCliente like ?1")
-	public List<Cliente> listaPorDatosLike(String DatosCliente);
+	@Query("select c from Cliente c where c.datosCliente like ?1")
+	public List<Cliente> listaPorDatosLike(String datosCliente);
 
 }

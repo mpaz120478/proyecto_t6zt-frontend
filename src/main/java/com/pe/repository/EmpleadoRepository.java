@@ -8,7 +8,7 @@ import com.pe.entity.Empleado;
 
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 	
-	@Query("select e from Empleado e where e.ApeEmpleado like ?1")
-	public List<Empleado> listaPorApellidosLike(String ApeEmpleado);
+	@Query("select e from Empleado e where e.apeEmpleado like ?1")
+	public List<Empleado> listaPorApellidosLike(String apeEmpleado);
 
 }

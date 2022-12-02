@@ -23,34 +23,35 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Empleado")
+@Table(name = "empleado")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Empleado {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int IdEmpleado;
-	private String DniEmpleado;
-	private String ApeEmpleado;
-	private String NomEmpleado;
-	private String EmailEmpleado;
-	private String FonoEmpleado;
-	
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , timezone = "America/Lima")
-	private Date FechaContrato;
-	
-	private double SueldoEmpleado;
-	private int Estado;
+	private int idEmpleado;
+	private String dniEmpleado;
+	private String apeEmpleado;
+	private String nomEmpleado;
+	private String emailEmpleado;
+	private String telefono;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdCargo")
+	@JoinColumn(name = "idCargo")
 	private Cargo cargo;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdRol")
+	@JoinColumn(name = "idRol")
 	private Roles rol;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date fechaContrato;
+	
+	private double sueldoEmpleado;
+	private int estado;
+	
 }

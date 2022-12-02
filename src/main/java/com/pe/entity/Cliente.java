@@ -22,28 +22,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int IdCliente;
+	private int idCliente;
 	
-	private String DocCliente;
-	private String DatosCliente;
-	private String DirecCliente;
-	private String FonoCliente;
-	private String EmailCliente;
-	private int Estado;
+	private String docCliente;
+	private String datosCliente;
+	private String fonoCliente;
+	private String emailCliente;
+	private String direcCliente;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idDpto")
+	private Departamento departamento;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaRegistro;
 	
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdDpto")
-	private Departamento departamento;
+	private int estado;
 }

@@ -8,6 +8,6 @@ public interface UsuarioService {
 
 	public abstract List<Usuario> listarUsuarios();
 	public abstract Usuario insertaActualizaUsuario(Usuario obj);
-	public abstract void eliminaUsuario(int IdUsuario);
-	public abstract List<Usuario>listaPorApellidoLike(String ApeEmpleado);
+	public abstract void eliminaUsuario(int idUsuario);
+	public abstract List<Usuario>listaPorApellidoLike(String apeEmpleado);
 }

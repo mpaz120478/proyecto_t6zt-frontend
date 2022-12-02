@@ -5,6 +5,6 @@ import com.pe.entity.Departamento;
 
 public interface DepartamentoService {
 	
-	public abstract List<Departamento>listarDptos();
+	public abstract List<Departamento> listarDepartamentos();
 
 }

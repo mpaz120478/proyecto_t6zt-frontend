@@ -15,37 +15,43 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int IdUsuario;
+	private int idUsuario;
 	
-	private String DniEmpleado;
-	private String ApeEmpleado;
-	private String NomEmpleado;
-	private String NomUsuario;
-	private String ClaveUsuario;
-	private int Estado;
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idEmpleado")
+	private Empleado empleado;
 	
+	private String dniEmpleado;
+	private String apeEmpleado;
+	private String nomEmpleado;
+	private String nomUsuario;
+	private String claveUsuario;
+		
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaRegistro;
 		
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdEmpleado")
-	private Empleado empleado;
+	private int estado;
 	
 	public String getNombreCompleto() {
-		return NomEmpleado.concat(" ").concat(ApeEmpleado);
+		return nomEmpleado.concat(" ").concat(apeEmpleado);
 	}
 }

@@ -24,13 +24,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void eliminaUsuario(int IdUsuario) {
-		repository.deleteById(IdUsuario);
+	public void eliminaUsuario(int idUsuario) {
+		repository.deleteById(idUsuario);
 	}
 
 	@Override
-	public List<Usuario> listaPorApellidoLike(String ApeEmpleado) {
-		return repository.listaPorApellidoLike(ApeEmpleado);
+	public List<Usuario> listaPorApellidoLike(String apeEmpleado) {
+		return repository.listaPorApellidoLike(apeEmpleado);
 	}
 
 

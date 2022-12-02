@@ -23,14 +23,14 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public void eliminaCliente(int IdCliente) {
-		repository.deleteById(IdCliente);
+	public void eliminaCliente(int idCliente) {
+		repository.deleteById(idCliente);
 		
 	}
 
 	@Override
-	public List<Cliente> listaPorDatosLike(String DatosCliente) {
-		return repository.listaPorDatosLike(DatosCliente);
+	public List<Cliente> listaPorDatosLike(String datosCliente) {
+		return repository.listaPorDatosLike(datosCliente);
 	}
 
 }

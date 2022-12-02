@@ -38,13 +38,13 @@ public class EmpleadoController {
 	
 	@GetMapping("/listaEmpleadoPorApellidoLike/{ape}")
 	@ResponseBody
-	public ResponseEntity<List<Empleado>>listaPorApellidosLike(@PathVariable("ape") String ApeEmpleado) {
+	public ResponseEntity<List<Empleado>>listaPorApellidosLike(@PathVariable("ape") String apeEmpleado) {
 		List<Empleado> lista  = null;
 		try {
-			if (ApeEmpleado.equals("todos")) {
+			if (apeEmpleado.equals("todos")) {
 				lista = empleadoService.listaPorApellidosLike("%");
 			}else {
-				lista = empleadoService.listaPorApellidosLike("%" + ApeEmpleado + "%");	
+				lista = empleadoService.listaPorApellidosLike("%" + apeEmpleado + "%");	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,10 +92,10 @@ public class EmpleadoController {
 	
 	@DeleteMapping("/eliminaEmpleado/{id}")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> eliminaEmpleado(@PathVariable("id") int IdEmpleado) {
+	public ResponseEntity<Map<String, Object>> eliminaEmpleado(@PathVariable("id") int idEmpleado) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			empleadoService.eliminaEmpleado(IdEmpleado);
+			empleadoService.eliminaEmpleado(idEmpleado);
 			salida.put("mensaje", Constantes.MENSAJE_ELI_EXITOSO);
 		} catch (Exception e) {
 			e.printStackTrace();

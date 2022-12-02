@@ -74,10 +74,10 @@ public class CargoController {
 	
 	@DeleteMapping("/eliminaCargo/{id}")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> eliminaAlumno(@PathVariable("id") int IdCargo) {
+	public ResponseEntity<Map<String, Object>> eliminaCargo(@PathVariable("id") int idCargo) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			cargoService.eliminaCargo(IdCargo);
+			cargoService.eliminaCargo(idCargo);
 			salida.put("mensaje", Constantes.MENSAJE_ELI_EXITOSO);
 		} catch (Exception e) {
 			e.printStackTrace();

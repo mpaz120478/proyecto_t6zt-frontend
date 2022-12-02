@@ -28,7 +28,7 @@ import com.pe.util.AppSettings;
 public class UtilController {
 
 	@Autowired
-	private DepartamentoService dptoService;
+	private DepartamentoService departamentoService;
 	
 	@Autowired
 	private CargoService cargoService;
@@ -45,10 +45,10 @@ public class UtilController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@GetMapping("/listarDptos")
+	@GetMapping("/listarDepartamentos")
 	@ResponseBody
 	public List<Departamento> listarDepartamentos() {
-		return dptoService.listarDptos();
+		return departamentoService.listarDepartamentos();
 	}
 	
 	@GetMapping("/listarCargos")

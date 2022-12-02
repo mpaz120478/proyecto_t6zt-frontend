@@ -24,7 +24,7 @@ public class CargoServiceImpl implements CargoService {
 	}
 
 	@Override
-	public void eliminaCargo(int IdCargo) {
-		repository.deleteById(IdCargo);
+	public void eliminaCargo(int idCargo) {
+		repository.deleteById(idCargo);
 	}
 }

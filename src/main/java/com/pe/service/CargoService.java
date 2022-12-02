@@ -7,6 +7,6 @@ public interface CargoService {
 	
 	public abstract List<Cargo>listarCargos();
 	public abstract Cargo insertaActualizaCargo(Cargo obj);
-	public abstract void eliminaCargo(int IdCargo);
+	public abstract void eliminaCargo(int idCargo);
 
 }

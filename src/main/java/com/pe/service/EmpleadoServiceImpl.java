@@ -24,13 +24,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
-	public void eliminaEmpleado(int IdEmpleado) {
-		repository.deleteById(IdEmpleado);
+	public void eliminaEmpleado(int idEmpleado) {
+		repository.deleteById(idEmpleado);
 	}
 
 	@Override
-	public List<Empleado> listaPorApellidosLike(String ApeEmpleado) {
-		return repository.listaPorApellidosLike(ApeEmpleado);
+	public List<Empleado> listaPorApellidosLike(String apeEmpleado) {
+		return repository.listaPorApellidosLike(apeEmpleado);
 	}
 	
 }

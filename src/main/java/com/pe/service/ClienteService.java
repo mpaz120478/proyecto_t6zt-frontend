@@ -7,6 +7,6 @@ public interface ClienteService {
 
 	public abstract List<Cliente>listarClientes();
 	public abstract Cliente insertaActualizaCliente(Cliente obj);
-	public abstract void eliminaCliente(int IdCliente);
-	public abstract List<Cliente>listaPorDatosLike(String DatosCliente);
+	public abstract void eliminaCliente(int idCliente);
+	public abstract List<Cliente>listaPorDatosLike(String datosCliente);
 }
