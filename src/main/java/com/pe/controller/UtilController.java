@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.pe.entity.Cargo;
+import com.pe.entity.Categoria;
 import com.pe.entity.Cliente;
 import com.pe.entity.Departamento;
 import com.pe.entity.Empleado;
 import com.pe.entity.Roles;
 import com.pe.entity.Usuario;
 import com.pe.service.CargoService;
+import com.pe.service.CategoriaService;
 import com.pe.service.ClienteService;
 import com.pe.service.DepartamentoService;
 import com.pe.service.EmpleadoService;
@@ -44,6 +46,10 @@ public class UtilController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
+	
 	
 	@GetMapping("/listarDepartamentos")
 	@ResponseBody
@@ -79,6 +85,12 @@ public class UtilController {
 	@ResponseBody
 	public List<Usuario> listarUsuarios() {
 		return usuarioService.listarUsuarios();
+	}
+	
+	@GetMapping("/listarCategorias")
+	@ResponseBody
+	public List<Categoria> listarCategorias() {
+		return categoriaService.listarCategorias();
 	}
 	
 }

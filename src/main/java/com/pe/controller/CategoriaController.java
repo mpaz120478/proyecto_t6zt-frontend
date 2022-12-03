@@ -1,14 +1,11 @@
 package com.pe.controller;
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,51 +13,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.pe.entity.Cliente;
-import com.pe.service.ClienteService;
+import com.pe.entity.Categoria;
+import com.pe.service.CategoriaService;
 import com.pe.util.AppSettings;
 import com.pe.util.Constantes;
 
 @RestController
-@RequestMapping("/url/clientes")
+@RequestMapping("/url/categorias")
 @CrossOrigin(origins = AppSettings.URL_CROSS_ORIGIN)
-public class ClienteController {
-
+public class CategoriaController {
+	
 	@Autowired
-	private ClienteService clienteService;
+	private CategoriaService categoriaService;
 	
-	@GetMapping
+	@PostMapping("/registraCategoria")
 	@ResponseBody
-	public ResponseEntity<List<Cliente>> listarClientes(){
-		List<Cliente> lista = clienteService.listarClientes();
-		return ResponseEntity.ok(lista);
-	}
-	
-	@GetMapping("/listaClientePorDatosLike/{datos}")
-	@ResponseBody
-	public ResponseEntity<List<Cliente>> listaClientePorDatosLike(@PathVariable("datos") String datosCliente) {
-		List<Cliente> lista  = null;
-		try {
-			if (datosCliente.equals("todos")) {
-				lista = clienteService.listaPorDatosLike("%");
-			}else {
-				lista = clienteService.listaPorDatosLike("%" + datosCliente + "%");	
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(lista);
-	}
-	
-	@PostMapping("/registraCliente")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> insertaCliente(@RequestBody Cliente obj) {
+	public ResponseEntity<Map<String, Object>> insertaCategoria(@RequestBody Categoria obj) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			obj.setIdCliente(0);
-			obj.setFechaRegistro(new Date());
-			obj.setEstado(1);
-			Cliente objSalida =  clienteService.insertaActualizaCliente(obj);
+			obj.setIdCategoria(0);
+			Categoria objSalida =  categoriaService.insertaActualizaCategoria(obj);
 			if (objSalida == null) {
 				salida.put("mensaje", Constantes.MENSAJE_REG_ERROR);
 			} else {
@@ -73,12 +45,12 @@ public class ClienteController {
 		return ResponseEntity.ok(salida);
 	}
 	
-	@PutMapping("/actualizaCliente")
+	@PutMapping("/actualizaCategoria")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> actualizaCliente(@RequestBody Cliente obj) {
+	public ResponseEntity<Map<String, Object>> actualizaCategoria(@RequestBody Categoria obj) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			Cliente objSalida =  clienteService.insertaActualizaCliente(obj);
+			Categoria objSalida =  categoriaService.insertaActualizaCategoria(obj);
 			if (objSalida == null) {
 				salida.put("mensaje", Constantes.MENSAJE_ACT_ERROR);
 			} else {
@@ -91,12 +63,12 @@ public class ClienteController {
 		return ResponseEntity.ok(salida);
 	}
 	
-	@DeleteMapping("/eliminaCliente/{id}")
+	@DeleteMapping("/eliminaCategoria/{id}")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> eliminaCliente(@PathVariable("id") int idCliente) {
+	public ResponseEntity<Map<String, Object>> eliminaCategoria(@PathVariable("id") int idCategoria) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			clienteService.eliminaCliente(idCliente);
+			categoriaService.eliminaCategoria(idCategoria);
 			salida.put("mensaje", Constantes.MENSAJE_ELI_EXITOSO);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,5 +76,4 @@ public class ClienteController {
 		}
 		return ResponseEntity.ok(salida);
 	}
-	
 }

@@ -38,7 +38,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/listaEmpleadoPorApellidoLike/{ape}")
 	@ResponseBody
-	public ResponseEntity<List<Empleado>>listaPorApellidosLike(@PathVariable("ape") String apeEmpleado) {
+	public ResponseEntity<List<Empleado>> listaPorApellidosLike(@PathVariable("ape") String apeEmpleado) {
 		List<Empleado> lista  = null;
 		try {
 			if (apeEmpleado.equals("todos")) {
